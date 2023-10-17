@@ -1,0 +1,1 @@
+Tip Calculator and Quiz Grader are the simple projects set forth in this short module on variables on variables
