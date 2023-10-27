@@ -1,0 +1,45 @@
+using UnityEngine;
+
+public class TimerScript : MonoBehaviour
+{
+    private bool counting = true;
+
+    private void Start()
+    {
+        StartCoroutine(CountMinutes());
+    }
+
+    private IEnumerator CountMinutes()
+    {
+        int seconds = 0;
+        int minutes = 0;
+
+        while (true)
+        {
+            if (counting)
+            {
+                Debug.Log(seconds + " seconds");
+                seconds++;
+            }
+
+            if (seconds >= 60)
+            {
+                Debug.Log("1 minute passed!");
+                seconds = 0;
+                minutes++;
+                counting = false; // Stop counting until the next minute
+            }
+
+            if (minutes > 0)
+            {
+                if (Input.GetKeyDown(KeyCode.R))
+                {
+                    counting = true; // Reset the timer if the 'R' key is pressed
+                    minutes = 0;
+                }
+            }
+
+            yield return new WaitForSeconds(1f);
+        }
+    }
+}
