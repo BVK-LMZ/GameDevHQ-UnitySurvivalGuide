@@ -1,0 +1,56 @@
+using UnityEngine;
+
+// Summary: This script is used to simulate a car information printer in Unity. It allows you to print
+// information about different cars when you press the spacebar, including car make, model, and year.
+public class CarInfoPrinter : MonoBehaviour
+{
+    // Arrays to store car information
+    private string[] carMake = new string[5];
+    private string[] carModel = new string[5];
+    private int[] carYear = new int[5];
+    
+    // Variable to keep track of the current car element
+    public int currentElement = 0;
+
+    // Start is called before the first frame update
+    private void Start()
+    {
+        // Initialize car information for the first car (you can set these values as needed).
+        carMake[0] = "Make1";
+        carModel[0] = "Model1";
+        carYear[0] = 2020;
+    }
+
+    // Update is called once per frame
+    private void Update()
+    {
+        // Check if the spacebar is pressed.
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            // Generate a random index to pick a car element.
+            int randomElementIndex = GenerateRandomIndex(0, 4);
+            PrintCarInfo(randomElementIndex);
+        }
+    }
+
+    // Print car information for a specific element.
+    private void PrintCarInfo(int elementIndex)
+    {
+        // Make sure the element index is within the array bounds.
+        if (elementIndex >= 0 && elementIndex < carMake.Length)
+        {
+            // Display the car's information.
+            Debug.Log("Car Make: " + carMake[elementIndex]);
+            Debug.Log("Car Model: " + carModel[elementIndex]);
+            Debug.Log("Car Year: " + carYear[elementIndex]);
+            Debug.Log("----------------------"); // Visual separation
+        }
+    }
+
+    // Generate a random integer within the specified range.
+    private int GenerateRandomIndex(int min, int max)
+    {
+        // Use Unity's built-in random number function to generate a random index.
+        return UnityEngine.Random.Range(min, max + 1);
+    }
+}
