@@ -1,0 +1,64 @@
+using UnityEngine;
+using TMPro;
+using System.Collections.Generic;
+
+
+
+//To use this script, you'll need a 
+//TextMeshPro InputField for user input, a TextMeshPro Text component to display results, and a UI Button configured to trigger the FizzBuzz logic 
+//They all must also be assigned, then you may fizz buzz it up my fizz buzza
+public class FizzBuzz : MonoBehaviour
+{
+    public TMP_InputField inputField;   // Input field to read the user score
+    public TMP_Text resultText;         // Text to display the result
+
+    // This method is called when the button is pressed.
+    public void FizzBuzzIt()
+    {
+        // Variable to store the user's input
+        int listLength;
+
+        // Try to parse the user's input into an integer
+        if (int.TryParse(inputField.text, out listLength))
+        {
+            // List to store the FizzBuzz results
+            List<string> fizzBuzzList = new List<string>();
+
+            // Loop from 1 to the user's input
+            for (int i = 1; i <= listLength; i++)
+            {
+                if (i % 3 == 0 && i % 5 == 0)
+                {
+                    fizzBuzzList.Add("FizzBuzz");
+                }
+                else if (i % 3 == 0)
+                {
+                    fizzBuzzList.Add("Fizz");
+                }
+                else if (i % 5 == 0)
+                {
+                    fizzBuzzList.Add("Buzz");
+                }
+                else
+                {
+                    fizzBuzzList.Add(i.ToString());
+                }
+            }
+
+            // Join the FizzBuzz list elements into a single string with newlines
+            string result = string.Join("\n", fizzBuzzList);
+
+            // Display the FizzBuzz result in the TextMeshPro component
+            resultText.text = result;
+
+            // Print the result to the Unity Console
+            Debug.Log(result + "\n-------------------------------------");
+        }
+        else
+        {
+            // Display an error message if the input is not a valid integer
+            resultText.text = "Invalid input. Please enter a valid number.";
+        }
+    }
+}
+
