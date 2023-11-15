@@ -1,0 +1,69 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+
+
+public class SomeScript : MonoBehaviour
+{
+    
+    // Declare and initialize variables
+    int _score1, _score2, _score3, _score4;
+    void Start()
+    {
+        CalculateScore();
+    }
+
+
+    int CalculateScore()
+    {
+        // Calculate the average score
+        int average = (_score1 + _score2 + _score3 + _score4 ) / 2;
+        // Print the average to the console
+        Debug.Log(average);
+        return average;
+    }
+
+    void PrintGrade(int arg_average)
+    {
+       // depending on the average score, print the grade to the console
+       if (arg_average >= 90)
+    {
+        Debug.Log("A");
+    }
+    else if (arg_average >= 80)
+    {
+        Debug.Log("B");
+    }
+    else if (arg_average >= 70)
+    {
+        Debug.Log("C");
+    }
+    else if (arg_average >= 60)
+    {
+        Debug.Log("D");
+    }
+    else
+    {
+        Debug.Log("F");
+    }
+    }
+
+    void ScoreBreakdown(int arg_average)
+    {
+        // create a list for the scores
+        List<int> scores = new List<int>();
+        // add the scores to the list
+        scores.Add(_score1);
+        scores.Add(_score2);
+        scores.Add(_score3);
+        scores.Add(_score4);
+        // for each loop
+        foreach (int score in scores)
+        {
+            Debug.Log("Score: " + score);
+        }
+         Debug.Log("Average: " + arg_average); 
+    }
+
+}
