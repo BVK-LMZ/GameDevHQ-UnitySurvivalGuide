@@ -1,0 +1,21 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        Console.WriteLine("Hello, World!");
+        Console.WriteLine("Hello, World!2");
+        Console.WriteLine("Hello, World!3");
+
+        try
+        {
+            throw new Exception("This is a forced exception."); //Stop hello world 4 from printing
+            Console.WriteLine("Hello, World!4"); 
+        }
+        catch(Exception e)
+        {
+            Console.WriteLine("Caught an exception: " + e.Message);
+        }
+    }
+} 
